@@ -12,9 +12,9 @@ const app = express() as unknown as Application;
 const { proxy, scriptUrl } = rtspRelay(app);
 
 const handler = proxy({
-  url: `rtsp://admin:admin@10.0.1.2:554/feed`,
-  // if your RTSP stream need credentials, include them in the URL as above
-  verbose: false,
+    url: `rtsp://admin:admin@127.0.0.1:554/feed`,
+    // if your RTSP stream need credentials, include them in the URL as above
+    verbose: false,
 });
 
 // the endpoint our RTSP uses
@@ -22,14 +22,14 @@ app.ws('/api/stream', handler);
 
 // dynamic URL test
 app.ws('/api/stream-many/:cameraIP', (ws, req) =>
-  proxy({
-    url: `rtsp://${req.params.cameraIP}:554/feed`,
-  })(ws),
+    proxy({
+        url: `rtsp://${req.params.cameraIP}:554/feed`,
+    })(ws),
 );
 
 // this is an example html page to view the stream
 app.get('/', (_req, res) =>
-  res.send(`
+    res.send(`
   <canvas id='canvas'></canvas>
 
   <script src='${scriptUrl}'></script>
@@ -55,25 +55,25 @@ httpsServer.listen(8443);
 
 const { proxy: proxy2 } = rtspRelay(app, httpsServer);
 
-app.ws('/ssl-test', proxy2({ url: 'rtsp://1.2.3.4:554' }));
+app.ws('/ssl-test', proxy2({ url: 'rtsp://127.0.0.1:554' }));
 
 /** Testing browser code */
 
 async function test() {
-  const canvas = document.querySelector('canvas');
+    const canvas = document.querySelector('canvas');
 
-  if (canvas) {
-    const player = await loadPlayer({
-      url: `ws://${window.location.host}/stream`,
-      canvas,
-      audio: false,
-      onDisconnect() {
-        console.log('Connection lost!');
-      },
-      disconnectThreshold: 3_000,
-    });
-    player.destroy();
-  }
+    if (canvas) {
+        const player = await loadPlayer({
+            url: `ws://${window.location.host}/stream`,
+            canvas,
+            audio: false,
+            onDisconnect() {
+                console.log('Connection lost!');
+            },
+            disconnectThreshold: 3_000,
+        });
+        player.destroy();
+    }
 }
 
 test();

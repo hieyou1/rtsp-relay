@@ -1,71 +1,67 @@
 {
-  "name": "rtsp-relay",
-  "version": "1.6.1",
-  "author": "Kyle Hensel",
-  "license": "MIT",
-  "description": "📽 Relay an RTSP stream through an existing express.js server",
-  "main": "index.js",
-  "types": "index.d.ts",
-  "engines": {
-    "node": ">=10.0.0"
-  },
-  "repository": "https://github.com/k-yle/rtsp-relay",
-  "files": [
-    "browser",
-    "index.d.ts",
-    "index.js"
-  ],
-  "keywords": [
-    "rtsp",
-    "rtsp-stream",
-    "stream",
-    "websocket",
-    "ws",
-    "express",
-    "ffmpeg",
-    "jsmpeg"
-  ],
-  "scripts": {
-    "pretest": "chmod u+x test/rtsp-simple-server",
-    "lint": "eslint --format pretty --ext .js,ts,.tsx --ignore-path .gitignore .",
-    "test": "tsc && jest --runInBand",
-    "build": "tsc index.js browser/index.js --declaration --allowJs --emitDeclarationOnly --resolveJsonModule",
-    "trypublish": "npm publish || true"
-  },
-  "dependencies": {
-    "@ffmpeg-installer/ffmpeg": "^1.1.0",
-    "express-ws": "^5.0.2",
-    "ps-node": "^0.1.6"
-  },
-  "devDependencies": {
-    "@types/express-ws": "^3.0.1",
-    "@types/jest": "^27.4.0",
-    "@types/jest-image-snapshot": "^4.3.1",
-    "@types/node": "^16.11.19",
-    "@types/ps-node": "^0.1.1",
-    "@types/puppeteer": "^5.4.4",
-    "eslint": "^8.6.0",
-    "eslint-config-kyle": "^7.15.0",
-    "express": "^4.17.2",
-    "jest": "^27.4.7",
-    "jest-image-snapshot": "^4.5.1",
-    "puppeteer": "^13.0.1",
-    "typescript": "^4.5.4"
-  },
-  "eslintConfig": {
-    "extends": "kyle"
-  },
-  "prettier": "eslint-config-kyle/prettier",
-  "jest": {
-    "forceExit": true,
-    "testTimeout": 20000,
-    "setupFiles": [
-      "./test/setupTests.js"
+    "name": "rtsp-relay",
+    "version": "1.6.1",
+    "author": "Kyle Hensel",
+    "license": "MIT",
+    "description": "📽 Relay an RTSP stream through an existing express.js server",
+    "main": "index.js",
+    "types": "index.d.ts",
+    "engines": {
+        "node": ">=10.0.0"
+    },
+    "repository": "https://github.com/k-yle/rtsp-relay",
+    "files": [
+        "browser",
+        "index.d.ts",
+        "index.js"
     ],
-    "reporters": [
-      "default",
-      "jest-image-snapshot/src/outdated-snapshot-reporter.js"
+    "keywords": [
+        "rtsp",
+        "rtsp-stream",
+        "stream",
+        "websocket",
+        "ws",
+        "express",
+        "ffmpeg",
+        "jsmpeg"
     ],
-    "collectCoverage": true
-  }
+    "scripts": {
+        "pretest": "chmod u+x test/rtsp-simple-server",
+        "lint": "eslint --format pretty --ext .js,ts,.tsx --ignore-path .gitignore .",
+        "test": "tsc && jest --runInBand",
+        "build": "tsc index.js browser/index.js --declaration --allowJs --emitDeclarationOnly --resolveJsonModule",
+        "trypublish": "npm publish || true"
+    },
+    "dependencies": {
+        "@ffmpeg-installer/ffmpeg": "^1.1.0",
+        "express-ws": "^5.0.2",
+        "ps-node": "^0.1.6"
+    },
+    "devDependencies": {
+        "@types/express-ws": "^3.0.1",
+        "@types/jest": "^27.4.0",
+        "@types/jest-image-snapshot": "^4.3.1",
+        "@types/node": "^16.11.19",
+        "@types/ps-node": "^0.1.1",
+        "@types/puppeteer": "^5.4.4",
+        "eslint": "^8.6.0",
+        "eslint-config-kyle": "^7.15.0",
+        "express": "^4.17.2",
+        "jest": "^27.4.7",
+        "jest-image-snapshot": "^4.5.1",
+        "puppeteer": "^13.0.1",
+        "typescript": "^4.5.4"
+    },
+    "jest": {
+        "forceExit": true,
+        "testTimeout": 20000,
+        "setupFiles": [
+            "./test/setupTests.js"
+        ],
+        "reporters": [
+            "default",
+            "jest-image-snapshot/src/outdated-snapshot-reporter.js"
+        ],
+        "collectCoverage": true
+    }
 }
